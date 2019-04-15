@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 5. Run:
 
-python topsites.py -u <USER> -p <PASSWORD> --key=<API_KEY> --action=TopSites --options="&Count=5&CountryCode=US&Output=json&ResponseGroup=Country"
+python topsites.py -u <USER> --key=<API_KEY> --action=TopSites --options="&Count=5&CountryCode=US&Output=json&ResponseGroup=Country"
 
 If you are getting "Not Authorized" messages, you probably have one of the
 following problems:
@@ -28,6 +28,6 @@ page and confirm you are subscribed to the product.
 and time are properly set on your computer.
 
 Copyright and License
-All content in this repository, unless otherwise stated, is Copyright © 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved. 
+All content in this repository, unless otherwise stated, is Copyright © 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 Except where otherwise noted, all examples in this collection are licensed under the MIT license. The full license text is provided in the LICENSE file accompanying this repository.

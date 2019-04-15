@@ -12,6 +12,7 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using Aws4RequestSigner;
+using System.Security;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
@@ -61,6 +62,35 @@ namespace dotnet_core_ats
     class Program
     {
       static String credentialsFile = @".alexa.credentials";
+
+      static private String GetPassword()
+      {
+          Console.Write("Password: ");
+          var pwd = new SecureString();
+          while (true)
+          {
+              ConsoleKeyInfo i = Console.ReadKey(true);
+              if (i.Key == ConsoleKey.Enter)
+              {
+                  break;
+              }
+              else if (i.Key == ConsoleKey.Backspace)
+              {
+                  if (pwd.Length > 0)
+                  {
+                      pwd.RemoveAt(pwd.Length - 1);
+                      Console.Write("\b \b");
+                  }
+              }
+              else if (i.KeyChar != '\u0000' ) // KeyChar == '\u0000' if the key pressed does not correspond to a printable character, e.g. F1, Pause-Break, etc
+              {
+                  pwd.AppendChar(i.KeyChar);
+                  Console.Write("*");
+              }
+          }
+          return new System.Net.NetworkCredential(string.Empty, pwd).Password;
+
+      }
 
         static private void saveCredentials(UserCognitoCredentials credentials)
         {
@@ -138,17 +168,18 @@ namespace dotnet_core_ats
         {
           UserCognitoCredentials credentials = getSavedCredentials();
           if (credentials == null) {
-            credentials = getCognitoCredentials(args[0], args[1]).Result;
+            String password = GetPassword();
+            credentials = getCognitoCredentials(args[0], password).Result;
             saveCredentials(credentials);
           }
 
             var signer = new AWS4RequestSigner(credentials.getAccessKey(), credentials.getSecretKey());
 				    var request = new HttpRequestMessage {
         		Method = HttpMethod.Get,
-				        RequestUri = new Uri("https://ats.api.alexa.com/api?Action=TopSites&Count=5&CountryCode=" +args[3] + "&ResponseGroup=Country")
+				        RequestUri = new Uri("https://ats.api.alexa.com/api?Action=TopSites&Count=5&CountryCode=" +args[2] + "&ResponseGroup=Country")
 				    };
 
-            request.Headers.Add("x-api-key", args[2]);
+            request.Headers.Add("x-api-key", args[1]);
             request.Headers.Add("x-amz-security-token", credentials.getSessionToken());
 
 			    request = await signer.Sign(request, "execute-api", "us-east-1");
@@ -162,8 +193,8 @@ namespace dotnet_core_ats
 
         static void Main(string[] args)
         {
-          if (args.Length != 4) {
-            Console.WriteLine("Usage: dotnet run user password API_KEY COUNTRY");
+          if (args.Length != 3) {
+            Console.WriteLine("Usage: dotnet run user API_KEY COUNTRY");
             System.Environment.Exit(1);
           }
           try{

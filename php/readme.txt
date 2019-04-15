@@ -17,7 +17,7 @@ https://docs.aws.amazon.com/aws-sdk-php/v3/download/aws.phar
 
 5. Run:
 
-php topsites.php  <USER> <PASSWORD> <API_KEY> <COUNTRY>
+php topsites.php  <USER> <API_KEY> <COUNTRY>
 
 If you are getting "Not Authorized" messages, you probably have one of the
 following problems:
@@ -29,6 +29,6 @@ page and confirm you are subscribed to the product.
 and time are properly set on your computer.
 
 Copyright and License
-All content in this repository, unless otherwise stated, is Copyright © 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved. 
+All content in this repository, unless otherwise stated, is Copyright © 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 Except where otherwise noted, all examples in this collection are licensed under the MIT license. The full license text is provided in the LICENSE file accompanying this repository.

@@ -30,14 +30,14 @@ class TopSites {
     protected static $CognitoIdentityPoolId = "us-east-1:bff024bb-06d0-4b04-9e5d-eb34ed07f884";
     protected static $CachedCredentials     = "./.alexa_credentials";
 
-    public function TopSites($apiUser, $apiPassword, $apiKey,  $countryCode) {
+    public function TopSites($apiUser, $apiKey,  $countryCode) {
         $now = time();
         $this->amzDate = gmdate("Ymd\THis\Z", $now);
         $this->dateStamp = gmdate("Ymd", $now);
         $this->countryCode = $countryCode;
         $this->apiKey = $apiKey;
         $this->apiUser = $apiUser;
-        $this->apiPassword = $apiPassword;
+        $this->apiPassword = "";
     }
 
     /**
@@ -82,6 +82,16 @@ class TopSites {
       $this->expiration = $awsCredentials["Expiration"];
     }
 
+    protected function hide_term() {
+        if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN')
+            system('stty -echo');
+    }
+
+    protected function restore_term() {
+        if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN')
+            system('stty echo');
+    }
+
     /**
      * Get temporary $credentials
     */
@@ -92,6 +102,11 @@ class TopSites {
          'region' => self::$Region,
          'credentials' => false,
        ]);
+
+       echo "Password: ";
+       $this->hide_term();
+       $this->apiPassword = rtrim(fgets(STDIN), PHP_EOL);
+       $this->restore_term();
 
        try {
            $result = $this->$idProviderClient->initiateAuth([
@@ -243,18 +258,17 @@ class TopSites {
     }
 }
 
-if (count($argv) < 5) {
-    echo "Usage: $argv[0] USER PASSWORD API_KEY COUNTRY_CODE\n";
+if (count($argv) < 4) {
+    echo "Usage: $argv[0] USER API_KEY COUNTRY_CODE\n";
     exit(-1);
 }
 else {
     $apiUser = $argv[1];
-    $apiPassword = $argv[2];
-    $apiKey = $argv[3];
-    $countryCode = $argv[4];
+    $apiKey = $argv[2];
+    $countryCode = $argv[3];
 }
 
-$topSites = new TopSites($apiUser, $apiPassword, $apiKey, $countryCode);
+$topSites = new TopSites($apiUser, $apiKey, $countryCode);
 $topSites->getTopSites();
 
 ?>
