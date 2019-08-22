@@ -16,7 +16,7 @@ mvn clean package
 
 5. Run:
 
-java -jar target/ATS-API-1.0-jar-with-dependencies.jar <USER> <API_KEY> <COUNTRY>
+java -jar target/ATS-API-1.0-jar-with-dependencies.jar <API_KEY> <COUNTRY>
 
 If you are getting "Not Authorized" messages, you probably have one of the
 following problems:
