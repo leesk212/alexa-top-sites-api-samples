@@ -10,14 +10,9 @@ Tested with PHP 7.1.23
    (Note that you must have an AWS account with a valid credit card)
 2. Register or login to the Alexa Developer Portal and copy the API Key shown on the page.
 3. Uncompress the zip file into a working directory.
-4. Get AWS SDK for PHP Version 3.
+4. Run:
 
-Download and save aws.phar to the sample directory from:
-https://docs.aws.amazon.com/aws-sdk-php/v3/download/aws.phar
-
-5. Run:
-
-php topsites.php  <USER> <API_KEY> <COUNTRY>
+php topsites.php <API_KEY> <COUNTRY>
 
 If you are getting "Not Authorized" messages, you probably have one of the
 following problems:

@@ -13,15 +13,14 @@ Steps:
 3. Uncompress the zip file into a working directory.
 4. Compile Program.cs:
 
-dotnet add dotnet-core-ats.csproj package Aws4RequestSigner
-dotnet add dotnet-core-ats.csproj package AWSSDK.CognitoIdentityProvider
-dotnet add dotnet-core-ats.csproj package AWSSDK.CognitoIdentity
-dotnet add dotnet-core-ats.csproj package Amazon.Extensions.CognitoAuthentication
 dotnet build
 
 5. Run:
 
- dotnet run user API_KEY country
+ dotnet run <API Portal Key> country
+
+ API Portal Key: The api key located in the top right corner of ats.alexa.com once you
+                 register/login to the API Portal
 
 If you are getting "Not Authorized" messages, you probably have one of the
 following problems:

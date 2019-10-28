@@ -16,7 +16,7 @@ npm install
 
 5. Run:
 
-node topsites.js <USER> <API_KEY> <COUNTRY>
+node topsites.js <API_KEY> <COUNTRY>
 
 If you are getting "Not Authorized" messages, you probably have one of the
 following problems:
