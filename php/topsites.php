@@ -14,7 +14,7 @@ class TopSites {
 
     protected static $ActionName            = 'Topsites';
     protected static $ResponseGroupName     = 'Country';
-    protected static $ServiceHost           = 'ats.stage.api.alexa.com';
+    protected static $ServiceHost           = 'ats.api.alexa.com';
     protected static $NumReturn             = 10;
     protected static $StartNum              = 1;
     protected static $ServiceURI            = "/api";
