@@ -4,7 +4,7 @@
 This sample will make a request to Alexa Top Sites using the API user
 credentials and API plan key.
 
-Tested with PHP 7.1.23
+Tested with PHP 7.3.11
 
 1. Subscribe to Alexa Top Sites at https://aws.amazon.com/marketplace.
    (Note that you must have an AWS account with a valid credit card)

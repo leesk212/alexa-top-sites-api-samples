@@ -19,7 +19,7 @@ class TopSites {
     protected static $StartNum              = 1;
     protected static $ServiceURI            = "/api";
 
-    public function TopSites($apiKey,  $countryCode) {
+    function __construct($apiKey,  $countryCode) {
         $now = time();
         $this->countryCode = $countryCode;
         $this->apiKey = $apiKey;
