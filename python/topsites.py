@@ -31,6 +31,7 @@ from urllib.parse import parse_qs, quote_plus
 host = 'ats.stage.api.alexa.com'
 endpoint = 'https://' + host
 method = 'GET'
+logging.basicConfig()
 log = logging.getLogger( "ats" )
 content_type = 'application/xml'
 local_tz = "America/Los_Angeles"
@@ -99,7 +100,6 @@ def parse_options( argv ):
     if 'key' not in opts or \
        'action' not in opts or \
        'country' not in opts:
-        log.error( "Missing required arguments" )
         return None
 
     #
