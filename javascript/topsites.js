@@ -10,7 +10,7 @@ const rp   = require('request-promise')
 const util = require('util');
 const readline = require('readline');
 
-const apiHost = 'ats.stage.api.alexa.com'
+const apiHost = 'ats.api.alexa.com'
 
 global.fetch = require("node-fetch");
 

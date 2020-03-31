@@ -25,7 +25,7 @@ namespace dotnet_core_ats
         {
 			    var request = new HttpRequestMessage {
       		Method = HttpMethod.Get,
-			        RequestUri = new Uri("https://ats.stage.api.alexa.com/api?Action=TopSites&Count=5&CountryCode=" +args[1] + "&ResponseGroup=Country")
+			        RequestUri = new Uri("https://ats.api.alexa.com/api?Action=TopSites&Count=5&CountryCode=" +args[1] + "&ResponseGroup=Country")
 			    };
 
           request.Headers.Add("x-api-key", args[0]);

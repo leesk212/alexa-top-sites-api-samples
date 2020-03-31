@@ -37,7 +37,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class ATS {
-  private static final String SERVICE_HOST = "ats.stage.api.alexa.com";
+  private static final String SERVICE_HOST = "ats.api.alexa.com";
   private static final String SERVICE_URI = "/api";
   private static final String AWS_BASE_URL = "https://" + SERVICE_HOST + SERVICE_URI;
   public String apikey = "";

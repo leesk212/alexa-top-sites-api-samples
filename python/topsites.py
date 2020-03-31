@@ -28,7 +28,7 @@ install_aliases()
 from urllib.parse import parse_qs, quote_plus
 
 # ************* REQUEST VALUES *************
-host = 'ats.stage.api.alexa.com'
+host = 'ats.api.alexa.com'
 endpoint = 'https://' + host
 method = 'GET'
 logging.basicConfig()
